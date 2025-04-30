@@ -3,9 +3,10 @@ import { Blog, User } from "../../models/models.js";
 
 const createPost = async (req, res) => {
   try {
-    const { title, userId, content } = req.body;
-
-    const isValid = postSchema.safeParse(req.body);
+    const { title, content } = req.body;
+    const {userId} = req
+    const postObject = {title, userId, content}
+    const isValid = postSchema.safeParse(postObject);
     if (!isValid.success) {
       return res
         .status(400)

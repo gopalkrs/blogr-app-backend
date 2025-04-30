@@ -1,4 +1,5 @@
 import createUser from "../actions/user-actions/createUser.js"
+import getUser from "../actions/user-actions/getUser.js";
 import loginUser from "../actions/user-actions/loginUser.js";
 
 const createUserControllers = (req, res) => {
@@ -8,5 +9,12 @@ const createUserControllers = (req, res) => {
 const loginUserControllers = (req, res) => {
     return loginUser(req, res);
 }
+const logoutUserControllers = (req, res) => {
+    logoutUser(req, res);
+}
 
-export {createUserControllers, loginUserControllers};
+const userLoggedInControllers = (req, res) => {
+    getUser(req, res);
+}
+
+export {createUserControllers, loginUserControllers, logoutUserControllers, userLoggedInControllers};

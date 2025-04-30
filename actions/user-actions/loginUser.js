@@ -1,6 +1,9 @@
 import { User } from "../../models/models.js";
 import loginSchema from "../../schema/loginSchema.js";
 import { comparePassword } from "../../utils/passwordHasher.js";
+import jwt from "jsonwebtoken";
+const COOKIE_NAME = 'sessionToken';
+
 
 const loginUser = async (req, res) => {
   try {
@@ -25,13 +28,23 @@ const loginUser = async (req, res) => {
       password,
       doesUserExist.hashedPassword
     );
-    console.log(isPasswordCorrect);
+    // console.log(isPasswordCorrect);
     if (!isPasswordCorrect) {
       return res
         .status(400)
         .json({ message: "Email or password is incorrect" });
     }
 
+    const token = jwt.sign({ id: doesUserExist._id }, process.env.JWT_SECRET_KEY, {
+      expiresIn: "7d",
+    });
+
+    res.cookie(COOKIE_NAME, token, {
+      httpOnly: true,
+      secure: false,
+      sameSite: "lax",
+      maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+    });
     res.status(201).json({ message: "User logged in", user: doesUserExist });
   } catch (err) {
     console.error(err);

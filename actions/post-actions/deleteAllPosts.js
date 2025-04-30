@@ -2,7 +2,7 @@ import { Blog } from "../../models/models.js";
 
 const deleteAllPosts = async (req, res) => {
     try{
-        const { userId } = req.params;
+        const { userId } = req;
         // if(!userId) {
         //     return res.status(400).json({ message: 'All fields are required' });
         // }
