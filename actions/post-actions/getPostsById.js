@@ -1,6 +1,6 @@
 import { Blog } from "../../models/models.js";
 
-const getPosts = async (req, res) => {
+const getPostsById = async (req, res) => {
     try{
         const { userId } = req;
         // if(!userId) {
@@ -8,7 +8,7 @@ const getPosts = async (req, res) => {
         // }
         const userPosts = await Blog.find({userId : userId});
         
-        if(!userPosts) return res.status(400).json({ message: 'No post created' });
+        if(!userPosts) return res.status(404).json({ message: 'No post created', posts : null });
         if(userPosts.length === 0) {
             return res.status(400).json({ message: 'No post created' });
         }
@@ -20,4 +20,4 @@ const getPosts = async (req, res) => {
     }
 }
 
-export default getPosts;
+export default getPostsById;

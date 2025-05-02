@@ -1,7 +1,8 @@
 import createPost from "../actions/post-actions/createPost.js";
 import deleteAllPosts from "../actions/post-actions/deleteAllPosts.js";
 import deleteposts from "../actions/post-actions/deletePost.js";
-import getPosts from "../actions/post-actions/getPosts.js";
+import getAllPosts from "../actions/post-actions/getAllPosts.js";
+import getPostsById from "../actions/post-actions/getPostsById.js";
 import getSinglePosts from "../actions/post-actions/getSinglePosts.js";
 
 const createPostController = (req, res) => {
@@ -9,7 +10,7 @@ const createPostController = (req, res) => {
 }
 
 const getPostsController = (req, res) => {
-    return getPosts(req, res);
+    return getPostsById(req, res);
 }
 
 const getSinglePostController = (req, res) => {
@@ -23,4 +24,8 @@ const deleteAllPostsController = (req, res) => {
     return deleteAllPosts(req, res);
 }
 
-export {createPostController, getPostsController, deletePostController, deleteAllPostsController, getSinglePostController};
+const getAllPostsController = (req, res) => {
+    return getAllPosts(req, res);
+}
+
+export {createPostController, getPostsController, deletePostController, deleteAllPostsController, getSinglePostController, getAllPostsController};
