@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 4000;
 
 app.use(express.json()); // Middleware to parse JSON bodies
 app.use(cors({
-  origin: 'https://blogr-app-frontend.vercel.app/', // Allow only frontend's URL
+  origin: 'https://blogr-app-frontend.vercel.app', // Allow only frontend's URL
   credentials: true, // Allow cookies to be sent with requests
 }));
 app.use(cookieParser());
