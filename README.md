@@ -53,14 +53,13 @@ Create a .env file in /client:
 
 -->.env
 VITE_API_URL=http://localhost:4000/api
----------------------------------------
 
 then run command 'npm run dev'
 
 ->Authentication
 Only admin users can create or manage posts
 
--.Users can view and read posts
+->Users can view and read posts
 
 ✍️ Author
 Gopal choudhary
