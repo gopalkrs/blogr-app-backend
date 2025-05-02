@@ -39,11 +39,10 @@ cd server
 npm install
 Create a .env file in /server:
 
----.env---------------------------------
+-->.env
 PORT=4000
 MONGO_URL=your_mongo_url
 JWT_SECRET_KEY=your_secret
-----------------------------------------
 
 run command 'npm run dev'
 
@@ -52,7 +51,7 @@ cd ../client
 npm install
 Create a .env file in /client:
 
-------------------.env-----------------
+-->.env
 VITE_API_URL=http://localhost:4000/api
 ---------------------------------------
 
