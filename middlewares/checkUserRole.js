@@ -1,22 +1,26 @@
 import mongoose from "mongoose";
 import { User } from "../models/models.js";
-import jwt from "jsonwebtoken";
 
 
 const checkUserRole = async (req, res, next) => {
   try {
     const userId = req.userId;
 
-    console.log(userId);
+    
     try{
       const userIdObject = new mongoose.Types.ObjectId(userId);
       
-      const userData = await User.findById(userId);
-
-      if(userData.role === 'user'){
-        return res.status(403).json({ message: "You are not authorized to perform this request" });
+      const userData = await User.findById(userIdObject);
+      console.log(userData);
+      if (!userData) {
+        return res.status(404).json({ message: "User not found" });
       }
-      next();
+  
+      if (userData.role === "admin") {
+        return next(); // only proceed if admin
+      }
+      return res.status(403).json({ message: "You are not authorized to perform this request" });
+    
     }catch(err) {
       console.log(err)
       return res.status(401).json({ message: "Error verifying user" });
