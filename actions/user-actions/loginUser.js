@@ -41,8 +41,8 @@ const loginUser = async (req, res) => {
 
     res.cookie(COOKIE_NAME, token, {
       httpOnly: true,
-      secure: true,
-      sameSite: "lax",
+      secure: process.env.NODE_ENV === 'production',
+      sameSite: "none",
       maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
     });
     res.status(201).json({ message: "User logged in", user: doesUserExist });
