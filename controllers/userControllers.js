@@ -1,6 +1,7 @@
 import createUser from "../actions/user-actions/createUser.js"
 import getUser from "../actions/user-actions/getUser.js";
 import loginUser from "../actions/user-actions/loginUser.js";
+import logoutUser from "../actions/user-actions/logoutUser.js";
 import updateUser from "../actions/user-actions/updateUser.js";
 
 const createUserControllers = (req, res) => {
