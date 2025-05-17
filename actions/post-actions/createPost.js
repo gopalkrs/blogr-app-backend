@@ -11,7 +11,7 @@ const createPost = async (req, res) => {
     if (!isValid.success) {
       return res
         .status(400)
-        .json({ message: "Invalid inputs", errors: isValid.error.errors });
+        .json({success: true,  message: "Invalid inputs", errors: isValid.error.errors });
     }
     // const doesUserExist = await User.findById(userId);
     // if (!doesUserExist) {
@@ -19,10 +19,10 @@ const createPost = async (req, res) => {
     // }
     const newPost = await Blog.create({ title, userId, content });
     
-    res.status(201).json({ message: "Post created", post: newPost });
+    res.status(201).json({success: true, message: "Post created", post: newPost });
   } catch (err) {
     console.error(err);
-    res.status(500).json({ message: "Error creating post" });
+    res.status(500).json({success: false, message: "Error creating post" });
   }
 };
 

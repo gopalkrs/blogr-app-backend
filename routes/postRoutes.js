@@ -7,7 +7,7 @@ const router = express.Router();
 
 router.post('/create', userIsLogged, checkUserRole, createPostController);
 router.get('/', userIsLogged, getPostsController);
-router.get('/all-posts', userIsLogged, getAllPostsController);
+router.get('/all-posts', getAllPostsController);
 router.get('/:postId', userIsLogged, getSinglePostController);
 router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
 router.delete('/:userId', userIsLogged, checkUserRole,  deleteAllPostsController)
