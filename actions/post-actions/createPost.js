@@ -3,10 +3,10 @@ import { Blog, User } from "../../models/models.js";
 
 const createPost = async (req, res) => {
   try {
-    const { title, content } = req.body;
+    const { title, content, imageUrl } = req.body;
     const {userId} = req
     
-    const postObject = {title, userId, content}
+    const postObject = {title, userId, content, imageUrl};
     const isValid = postSchema.safeParse(postObject);
     if (!isValid.success) {
       return res
@@ -17,7 +17,7 @@ const createPost = async (req, res) => {
     // if (!doesUserExist) {
     //   return res.status(400).json({ message: "User does not exist" });
     // }
-    const newPost = await Blog.create({ title, userId, content });
+    const newPost = await Blog.create({ title, userId, content, imageUrl });
     
     res.status(201).json({success: true, message: "Post created", post: newPost });
   } catch (err) {

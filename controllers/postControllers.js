@@ -4,6 +4,7 @@ import deleteposts from "../actions/post-actions/deletePost.js";
 import getAllPosts from "../actions/post-actions/getAllPosts.js";
 import getPostsById from "../actions/post-actions/getPostsById.js";
 import getSinglePosts from "../actions/post-actions/getSinglePosts.js";
+import uploadImage from "../actions/post-actions/uploadImage.js";
 
 const createPostController = (req, res) => {
     return createPost(req, res);
@@ -28,4 +29,8 @@ const getAllPostsController = (req, res) => {
     return getAllPosts(req, res);
 }
 
-export {createPostController, getPostsController, deletePostController, deleteAllPostsController, getSinglePostController, getAllPostsController};
+const uploadImageController = (req, res) =>{
+    return uploadImage(req, res);
+}
+
+export {createPostController, getPostsController, deletePostController, deleteAllPostsController, getSinglePostController, getAllPostsController, uploadImageController};
