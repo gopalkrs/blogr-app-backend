@@ -18,7 +18,7 @@ const uploadImage = async (req, res) => {
             Key: fileName,
             Body: file.buffer,
             ContentType: file.mimetype,
-            // ACL: 'public-read',
+            //ACL: 'public-read',
         };
 
         const data = await s3.upload(params).promise();
