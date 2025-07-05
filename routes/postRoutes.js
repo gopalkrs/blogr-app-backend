@@ -25,8 +25,8 @@ router.get('/', userIsLogged, getPostsController);
 router.get('/all-posts', getAllPostsController);
 
 
-//router.get('/:postId', userIsLogged, getSinglePostController);
-//router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
+router.get('/:postId', userIsLogged, getSinglePostController);
+router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
 router.delete('/user/:userId', userIsLogged, checkUserRole,  deleteAllPostsController);
 
 
