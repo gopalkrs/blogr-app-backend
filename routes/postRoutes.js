@@ -19,11 +19,15 @@ const upload = multer({ storage: storage });
 
 router.post('/create', userIsLogged, checkUserRole, createPostController);
 router.post('/upload', userIsLogged, upload.single('file'), uploadImageController);
+
+
 router.get('/', userIsLogged, getPostsController);
 router.get('/all-posts', getAllPostsController);
-router.get('/:postId', userIsLogged, getSinglePostController);
-router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
-router.delete('/:userId', userIsLogged, checkUserRole,  deleteAllPostsController);
+
+
+//router.get('/:postId', userIsLogged, getSinglePostController);
+//router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
+router.delete('/user/:userId', userIsLogged, checkUserRole,  deleteAllPostsController);
 
 
 export default router;
