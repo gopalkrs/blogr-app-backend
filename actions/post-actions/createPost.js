@@ -7,7 +7,6 @@ const createPost = async (req, res) => {
     const {userId} = req
     
     const postObject = {title, userId, content, imageUrl, category};
-    co
     const isValid = postSchema.safeParse(postObject);
     if (!isValid.success) {
       return res

@@ -6,6 +6,7 @@ const blogSchema = new Schema({
   title: String, // String is shorthand for {type: String}
   content: String,
   imageUrl: String,
+  category: String,
   userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },  // Reference to the User model
   date: { type: Date, default: Date.now },
 });
