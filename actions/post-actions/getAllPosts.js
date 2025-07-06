@@ -11,7 +11,11 @@ const getAllPosts = async (req, res) => {
                 foreignField : "_id",
                 as : "user"
             }
-        }]);
+        },
+        {
+            $sort: {date: -1}
+        }
+    ]);
 
         //console.log(allPosts);
         
