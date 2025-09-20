@@ -1,9 +1,10 @@
 import express from 'express';
-import {createPostController, deleteAllPostsController, deletePostController, getAllPostsController, getPostsController, getSinglePostController, uploadImageController} from '../controllers/postControllers.js';
+import {createPostController, deleteAllPostsController, deletePostController, getAllPostsController, getMostLikedPostsController, getMostRecentPostsController, getPostsController, getSinglePostController, uploadImageController} from '../controllers/postControllers.js';
 import userIsLogged from '../middlewares/userIsLogged.js';
 import checkUserRole from '../middlewares/checkUserRole.js';
 import multer from 'multer';
 import AWS from 'aws-sdk'
+import { getUserByIdControllers } from '../controllers/userControllers.js';
 
 const router = express.Router();
 
@@ -24,10 +25,15 @@ router.post('/upload', userIsLogged, upload.single('file'), uploadImageControlle
 router.get('/', userIsLogged, getPostsController);
 router.get('/all-posts', getAllPostsController);
 
+router.get('/most-liked', getMostLikedPostsController);
+router.get('/most-recent', getMostRecentPostsController);
+
 
 router.get('/:postId', userIsLogged, getSinglePostController);
 router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
 router.delete('/user/:userId', userIsLogged, checkUserRole,  deleteAllPostsController);
+
+router.get('/author/:authorId', getUserByIdControllers);
 
 
 export default router;

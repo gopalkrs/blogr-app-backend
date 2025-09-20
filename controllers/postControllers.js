@@ -2,6 +2,8 @@ import createPost from "../actions/post-actions/createPost.js";
 import deleteAllPosts from "../actions/post-actions/deleteAllPosts.js";
 import deleteposts from "../actions/post-actions/deletePost.js";
 import getAllPosts from "../actions/post-actions/getAllPosts.js";
+import getMostLikedPosts from "../actions/post-actions/getMostLikedPosts.js";
+import getMostRecentPosts from "../actions/post-actions/getMostRecentPosts.js";
 import getPostsById from "../actions/post-actions/getPostsById.js";
 import getSinglePosts from "../actions/post-actions/getSinglePosts.js";
 import uploadImage from "../actions/post-actions/uploadImage.js";
@@ -33,4 +35,12 @@ const uploadImageController = (req, res) =>{
     return uploadImage(req, res);
 }
 
-export {createPostController, getPostsController, deletePostController, deleteAllPostsController, getSinglePostController, getAllPostsController, uploadImageController};
+const getMostLikedPostsController = (req, res) => {
+    return getMostLikedPosts(req, res);
+}
+
+const getMostRecentPostsController = (req, res) => {
+    return getMostRecentPosts(req, res);
+}
+
+export {createPostController, getMostRecentPostsController, getPostsController, deletePostController, deleteAllPostsController, getSinglePostController, getAllPostsController, uploadImageController, getMostLikedPostsController};

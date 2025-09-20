@@ -3,6 +3,7 @@ import getUser from "../actions/user-actions/getUser.js";
 import loginUser from "../actions/user-actions/loginUser.js";
 import logoutUser from "../actions/user-actions/logoutUser.js";
 import updateUser from "../actions/user-actions/updateUser.js";
+import getAuthorById from "../actions/user-actions/getAuthorById.js";
 
 const createUserControllers = (req, res) => {
     return createUser(req, res);
@@ -23,4 +24,8 @@ const updateUserControllers = (req, res) => {
     updateUser(req, res);
 }
 
-export {createUserControllers, loginUserControllers, logoutUserControllers, userLoggedInControllers, updateUserControllers};
+const getUserByIdControllers = (req, res) => {
+    return getAuthorById(req, res);
+}
+
+export {createUserControllers, loginUserControllers, logoutUserControllers, userLoggedInControllers, updateUserControllers, getUserByIdControllers};

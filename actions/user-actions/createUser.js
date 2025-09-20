@@ -29,7 +29,7 @@ const createUser = async (req, res) => {
         res.cookie(COOKIE_NAME, token,{
             httpOnly: true,
             secure: false,
-            sameSite: 'strict',
+            sameSite: 'lax',
             maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days
         })
         res.status(201).json({ message: 'User created', user: newUser });
