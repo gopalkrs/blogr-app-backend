@@ -12,11 +12,6 @@ const blogSchema = new Schema({
   tags: [String],
   views: { type: Number, default: 0 },
   likes: { type: Number, default: 0 },
-  comments: [{ 
-    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
-    comment: String,
-    date: { type: Date, default: Date.now }
-  }],
   followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
 });
 
@@ -35,6 +30,13 @@ const likeSchema = new Schema({
     date: { type: Date, default: Date.now },
 });
 
+const commentSchema = new Schema({
+    userId: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    blogId: { type: mongoose.Schema.Types.ObjectId, ref: 'Blog' },
+    comment: String,
+    date: { type: Date, default: Date.now },
+});
+
 const newsletterSchema = new Schema({
   email: String,
   date: { type: Date, default: Date.now },
@@ -43,7 +45,9 @@ const newsletterSchema = new Schema({
 const User = mongoose.model('User', userSchema);
 const Blog = mongoose.model('Blog', blogSchema);
 const Like = mongoose.model('Like', likeSchema);
+const Comment = mongoose.model('Comment', commentSchema);
+
 const Newsletter = mongoose.model('Newsletter', newsletterSchema);
 
 
-export { User, Blog, Like, Newsletter };
+export { User, Blog, Like, Newsletter, Comment };

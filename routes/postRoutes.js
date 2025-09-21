@@ -1,5 +1,5 @@
 import express from 'express';
-import {createPostController, deleteAllPostsController, deletePostController, getAllPostsController, getMostLikedPostsController, getMostRecentPostsController, getPostsController, getSinglePostController, uploadImageController} from '../controllers/postControllers.js';
+import {commentPostController, createPostController, deleteAllPostsController, deletePostController, getAllPostsController, getMostLikedPostsController, getMostRecentPostsController, getPostCommentsController, getPostsController, getSinglePostController, likedPostByIdController, likePostController, uploadImageController} from '../controllers/postControllers.js';
 import userIsLogged from '../middlewares/userIsLogged.js';
 import checkUserRole from '../middlewares/checkUserRole.js';
 import multer from 'multer';
@@ -28,12 +28,17 @@ router.get('/all-posts', getAllPostsController);
 router.get('/most-liked', getMostLikedPostsController);
 router.get('/most-recent', getMostRecentPostsController);
 
-
 router.get('/:postId', userIsLogged, getSinglePostController);
 router.delete('/:postId', userIsLogged, checkUserRole, deletePostController);
 router.delete('/user/:userId', userIsLogged, checkUserRole,  deleteAllPostsController);
 
 router.get('/author/:authorId', getUserByIdControllers);
+
+router.put('/likes/:postId', userIsLogged, likePostController);
+router.get('/likes/:postId', userIsLogged, likedPostByIdController);
+
+router.post('/comments/:postId', userIsLogged, commentPostController);
+router.get('/comments/:postId', getPostCommentsController);
 
 
 export default router;
